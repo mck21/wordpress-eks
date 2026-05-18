@@ -1,7 +1,5 @@
 # Architecture
 
-## Component Diagram
-
 ![Architecture diagram](../images/architecture.png)
 
 ## Services Used

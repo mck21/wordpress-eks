@@ -2,30 +2,7 @@
 
 Deployment of WordPress on Amazon EKS using EFS for file persistence and RDS (MySQL) as the database backend.
 
-## Architecture Overview
-
-```
-                        Internet
-                           │
-                    ┌──────▼──────┐
-                    │     ALB     │  (created automatically by K8s LoadBalancer)
-                    └──────┬──────┘
-                           │
-              ┌────────────▼────────────┐
-              │        EKS Cluster       │
-              │                          │
-              │  ┌──────────────────┐    │
-              │  │ wordpress pod x3 │    │
-              │  └────────┬─────────┘    │
-              └───────────┼──────────────┘
-                          │
-              ┌───────────┴───────────┐
-              │                       │
-     ┌────────▼────────┐   ┌──────────▼────────┐
-     │   RDS MySQL      │   │    EFS Volume      │
-     │  (wordpressdb)   │   │  /wordpress (html) │
-     └──────────────────┘   └───────────────────┘
-```
+![Architecture diagram](../images/architecture.png)
 
 ## Stack
 
@@ -54,7 +31,7 @@ wordpress-eks/
 │   ├── 04-mariadb.yaml      # MariaDB deployment (phase 1 only)
 │   ├── 05-wp-deployment.yaml# WordPress Service + Deployment
 │   └── 06-rds-svc.yaml      # ExternalName Service pointing to RDS
-└── images/                  # Screenshots and evidence
+└── images/                  # Screenshots 
 ```
 
 ## Deployment Phases

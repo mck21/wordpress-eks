@@ -31,8 +31,6 @@ If it fails or the cluster is missing, regenerate the kubeconfig:
 aws eks update-kubeconfig --name my-cluster --region us-east-1
 ```
 
-> **Evidence:** Cluster created and reachable.
-
 ![Cluster created](../images/01-cluster-created.png)
 
 ---
@@ -96,8 +94,6 @@ Once created, note the **File System ID** (`fs-XXXXXXXX`).
 
 Note both **Access Point IDs** (`fsap-XXXXXXXX`).
 
-> **Evidence:** Both EFS Access Points created.
-
 ![EFS Access Points](../images/02-access-points.png)
 
 ---
@@ -121,8 +117,6 @@ kubectl create secret generic db-pass \
 
 kubectl get secrets -n=ns-wp
 ```
-
-> **Evidence:** Secret `db-pass` created in namespace `ns-wp`.
 
 ![DB secret created](../images/03-db-secret.png)
 
@@ -172,8 +166,6 @@ kubectl apply -f iac/04-mariadb.yaml -n=ns-wp
 kubectl get all -n=ns-wp
 ```
 
-> **Evidence:** MariaDB deployment running.
-
 ![MariaDB deployment](../images/04-mariadb-deployment.png)
 
 Verify DB access (replace pod name with yours):
@@ -181,8 +173,6 @@ Verify DB access (replace pod name with yours):
 ```bash
 kubectl exec -it wordpress-mariadb-XXXXXX -n=ns-wp -- mariadb -u wpuser -p
 ```
-
-> **Evidence:** Successful connection to MariaDB pod.
 
 ![MariaDB connection OK](../images/05-mariadb-connection-ok.png)
 
@@ -197,18 +187,14 @@ kubectl get all -n=ns-wp
 
 The `wordpress` Service will show a DNS name under `EXTERNAL-IP` once the ALB is provisioned (takes 1-2 minutes). Open that URL in a browser to complete the WordPress installer.
 
-> **Evidence:** WordPress deployment running and accessible via load balancer.
-
 ![WordPress deployed OK](../images/06-wordpress-deployed-ok.png)
-
-### 📸 Evidence checkpoint (after Step 8 / exercise 7)
 
 ```bash
 kubectl get pvc -n=ns-wp
 kubectl get all -n=ns-wp
 ```
 
-> **Evidence:** PVCs bound and all Phase 1 resources running.
+> Phase 1 resources running.
 
 ![Evidencia 1 — Phase 1 complete](../images/Evidencia%201.png)
 
@@ -251,8 +237,6 @@ AWS Console → **RDS → Create database**:
 
 Note the **Endpoint** once the instance reaches `Available` status.
 
-> **Evidence:** RDS `wordpressdb` instance created and available.
-
 ![RDS wordpressdb created](../images/07-rds-wordpressdb-created.png)
 
 ### Create the database and user
@@ -285,8 +269,6 @@ mariadb -h YOUR-RDS-ENDPOINT.rds.amazonaws.com -u wpuser -p
 SHOW DATABASES;
 EXIT;
 ```
-
-> **Evidence:** `wpuser` can connect and see `wordpressdb`.
 
 ![wpuser SHOW DATABASES](../images/08-wpuser-show-databases.png)
 
@@ -339,14 +321,12 @@ kubectl get pods -n=ns-wp -o wide
 # 3 pods distributed across nodes
 ```
 
-### 📸 Evidence checkpoint (after Step 10 / exercise 9)
-
 ```bash
 kubectl get pvc -n=ns-wp
 kubectl get all -n=ns-wp
 ```
 
-> **Evidence:** PVCs bound and 3 WordPress replicas running with RDS backend.
+> PVCs bound and 3 WordPress replicas running with RDS backend.
 
 ![Evidencia 2 — Phase 2 complete](../images/Evidencia%202.png)
 
@@ -367,7 +347,5 @@ From the AWS Console, delete in this order to avoid dependency errors:
 2. EKS Cluster
 3. RDS instance
 4. EFS file system
-
-> **Evidence:** All Kubernetes resources deleted before tearing down AWS infrastructure.
 
 ![Resources cleaning](../images/09-resources-cleaning.png)
