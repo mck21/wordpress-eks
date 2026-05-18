@@ -4,16 +4,18 @@ Deployment of WordPress on Amazon EKS using EFS for file persistence and RDS (My
 
 ![Architecture diagram](images/architecture.png)
 
+Full architecture explanation: [docs/architecture.md](docs/architecture.md)
+
 ## Stack
 
 | Component | Service |
 |---|---|
-| Container orchestration | Amazon EKS |
-| Application | WordPress (official image) |
-| Database | Amazon RDS MySQL (db.t3.micro) |
-| File storage | Amazon EFS (Regional) |
-| Load balancer | AWS ELB (Classic, auto-provisioned) |
-| Secrets | Kubernetes Secret |
+| Container orchestration | ![Amazon EKS](https://img.shields.io/badge/Amazon%20EKS-FF9900?style=flat&logo=amazoneks&logoColor=white) |
+| Application | ![WordPress](https://img.shields.io/badge/WordPress-21759B?style=flat&logo=wordpress&logoColor=white) |
+| Database | ![Amazon RDS](https://img.shields.io/badge/Amazon%20RDS-527FFF?style=flat&logo=amazonrds&logoColor=white) MySQL db.t3.micro |
+| File storage | ![Amazon EFS](https://img.shields.io/badge/Amazon%20EFS-FF9900?style=flat&logo=amazonaws&logoColor=white) Regional |
+| Load balancer | ![AWS ELB](https://img.shields.io/badge/AWS%20ELB-FF9900?style=flat&logo=amazonaws&logoColor=white) Classic, auto-provisioned |
+| Secrets | ![Kubernetes](https://img.shields.io/badge/Kubernetes%20Secret-326CE5?style=flat&logo=kubernetes&logoColor=white) |
 
 ## Repository Structure
 
