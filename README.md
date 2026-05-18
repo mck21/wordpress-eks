@@ -2,7 +2,7 @@
 
 Deployment of WordPress on Amazon EKS using EFS for file persistence and RDS (MySQL) as the database backend.
 
-![Architecture diagram](../images/architecture.png)
+![Architecture diagram](images/architecture.png)
 
 ## Stack
 
