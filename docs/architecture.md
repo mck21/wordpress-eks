@@ -7,10 +7,10 @@
 | Service | Role |
 |---|---|
 | <img src="../images/icons/eks.svg" width="20"/> **Amazon EKS** | Managed Kubernetes cluster — orchestrates WordPress pods across three worker nodes (one per AZ) |
-| <img src="../images/icons/alb.png" width="20"/> **Application Load Balancer** | Exposes WordPress to the internet on port 80; automatically provisioned via a `Service` of type `LoadBalancer` |
-| <img src="../images/icons/efs.png" width="20"/> **EFS** | Shared persistent filesystem for WordPress files (`/var/www/html`); mounted with ReadWriteMany across all pods |
+| <img src="../images/icons/alb.svg" width="20"/> **Application Load Balancer** | Exposes WordPress to the internet on port 80; automatically provisioned via a `Service` of type `LoadBalancer` |
+| <img src="../images/icons/efs.svg" width="20"/> **EFS** | Shared persistent filesystem for WordPress files (`/var/www/html`); mounted with ReadWriteMany across all pods |
 | <img src="../images/icons/rds.png" width="20"/> **RDS MySQL** | Managed relational database for all WordPress data (Phase 2); replaces the in-cluster MariaDB pod |
-| <img src="../images/icons/ec2.svg" width="20"/> **EC2 Worker Nodes** | Three nodes spread across `us-east-1a`, `us-east-1b`, `us-east-1c` running the WordPress (and Phase 1 MariaDB) pods |
+| <img src="../images/icons/ec2.png" width="20"/> **EC2 Worker Nodes** | Three nodes spread across `us-east-1a`, `us-east-1b`, `us-east-1c` running the WordPress (and Phase 1 MariaDB) pods |
 | <img src="../images/icons/vpc.svg" width="20"/> **VPC / Security Groups** | Network isolation — RDS and EFS are only reachable from within the VPC; no public endpoints exposed |
 
 ## Kubernetes Resources Summary
