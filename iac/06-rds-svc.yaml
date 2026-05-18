@@ -1,0 +1,14 @@
+# Phase 2 — replaces the MariaDB headless Service
+# The Service name is intentionally identical to the MariaDB one (wordpress-mariadb)
+# so the WordPress deployment requires no changes when switching from pod DB to RDS
+apiVersion: v1
+kind: Service
+metadata:
+  name: wordpress-mariadb
+  labels:
+    app: wordpress
+spec:
+  type: ExternalName
+  # Replace with your actual RDS endpoint
+  # Find it in AWS Console → RDS → your instance → Connectivity & security → Endpoint
+  externalName: YOUR-RDS-ENDPOINT.rds.amazonaws.com
